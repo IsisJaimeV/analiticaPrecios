@@ -55,8 +55,7 @@ export class PrecioPisoDAOService {
         const json = JSON.parse(body);
 
         this.eliminarVacios(json);
-
-        return this.http.post(environment.endp_precioPiso, body, { 'headers': headers });
+        return this.http.post(environment.endp_precioPiso, json, { 'headers': headers });
           
     }
 

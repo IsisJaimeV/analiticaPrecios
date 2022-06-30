@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit {
     linea: new FormControl('', Validators.required),
     codigo: new FormControl('', Validators.required),
     zona: new FormControl('', Validators.required),
-    propuesto: new FormControl(''),
+    propuesto: new FormControl(),
     volumen: new FormControl('', Validators.required),
     tipoOperacion: new FormControl(false),
   })
