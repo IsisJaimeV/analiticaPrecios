@@ -23,20 +23,18 @@
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off" id="zona" required (change)="validaZona($event)">
-                <datalist required id="filterZona">
+                <select (change)="validaZona($event)" formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" required>
                     <option [value]="item.nombre" *ngFor="let item of zona">
                         {{item.area}} {{item.nombre}}
                     </option>
-                </datalist>
+                </select>
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" autocomplete="off">
-                <span
-                    id="selectedUMSpan"> {{selectedUMSpan}}</span>
+                <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
             </div>
         </div>
         <div class="row">

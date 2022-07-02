@@ -11,25 +11,43 @@ export class PrecioPisoDAOService {
 
     constructor(private http: HttpClient) { }
 
+    getAuth(path: Object): Observable<any> {
+        
+        var body = JSON.stringify(path)
+        var json = JSON.parse(body)
+
+        const headers = {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f',
+            'Authorization':  `Bearer ${json.token}`
+        }
+
+        delete json.token
+
+        console.log(json)
+        return this.http.post(environment.endp_auth, json, { 'headers': headers });
+    }
+
     getLinea(): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
+            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
         }
         return this.http.get(environment.endp_linea, { 'headers': headers })
     }
 
     getCodigo(linea: any): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
+            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
         }
         return this.http.get(environment.endp_codigo + linea, { 'headers': headers })
     }
 
-    getZona(): Observable<any> {
+    getZona(correo: string): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
+            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
         }
-        return this.http.get(environment.endp_zona, { 'headers': headers })
+
+        return this.http.get(environment.endp_zona + correo, { 'headers': headers })
     }
 
 
@@ -48,7 +66,7 @@ export class PrecioPisoDAOService {
     getDatos(form: Object): Observable<any> {
         const headers = {
             'Content-Type': 'application/json; charset=utf-8',
-            'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
+            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
         }
 
         const body = JSON.stringify(form);

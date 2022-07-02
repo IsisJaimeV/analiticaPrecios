@@ -108,6 +108,7 @@ export class DashboardComponent implements OnInit {
   })
   mymodel: any;
   mymodel2: any;
+  correo: any = "";
 
   constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService) { }
 
@@ -190,7 +191,10 @@ export class DashboardComponent implements OnInit {
   }
 
   selectZona() {
-    this.precioPiso.getZona().subscribe(res => {
+    this.correo = localStorage.getItem("user");
+
+    this.precioPiso.getZona(this.correo).subscribe(res => {
+      console.log(res)
       this.zona = res;
     });
 
