@@ -10,7 +10,8 @@ import { FilterComponent } from './common/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgxSpinnerModule } from "ngx-spinner";  
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoadingComponent } from './views/loading/loading.component';  
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DashboardComponent,
     NotFoundComponent,
     HeaderComponent,
-    FilterComponent
+    FilterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
