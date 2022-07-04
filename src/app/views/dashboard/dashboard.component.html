@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
-                <input formControlName="linea" (ngModelChange)="selectCodigo($event)" [ngModel]="mymodel2" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" autocomplete="off" id="linea" required>
+                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" id="linea" autocomplete="off">
                 <datalist id="filterLinea">
                     <option [value]="item.linea" *ngFor="let item of linea">
                         {{item.linea}} {{item.descripcion}}
@@ -13,19 +13,19 @@
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
-                <!-- <input type="text" formControlName="codigo"> -->
-                <input formControlName="codigo" (change)="selectedCodigo($event)" (keydown)="borradoSpanCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;" id="codigo" autocomplete="off" id="codigo" required>
+                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" (keydown)="borradoSpanCodigo($event)" style="width: 11vw;" id="codigo" autocomplete="off">
                 <datalist required id="filterCodigo">
-                    <option [value]="item.codigo" *ngFor="let item of codigo" >
+                    <option [value]="item.codigo" *ngFor="let item of codigo">
                         {{item.codigo}} {{item.descripcion}}
                     </option>
                 </datalist>
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <select (change)="validaZona($event)" formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" required>
+                <select formControlName="zona" list="filterZona" name="filterZona" id="zona" style="width: 11vw;" autocomplete="off" (change)="validaZona($event)">
+                    <option value="" disabled selected hidden>Selecciona una Zona</option>
                     <option [value]="item.nombre" *ngFor="let item of zona">
-                        {{item.area}} {{item.nombre}}
+                        {{item.nombre}}
                     </option>
                 </select>
             </div>

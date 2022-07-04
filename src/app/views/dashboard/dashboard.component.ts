@@ -146,7 +146,7 @@ export class DashboardComponent implements OnInit {
   }
 
   selectCodigo(event: any) {
-    let value = event;
+    let value = event.target.value;
     (document.getElementById("codigo") as HTMLSelectElement).disabled = true;
     (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
     this.precioPiso.getCodigo(value).subscribe(res => {
@@ -193,9 +193,12 @@ export class DashboardComponent implements OnInit {
   selectZona() {
     this.correo = localStorage.getItem("user");
 
+    (document.getElementById("zona") as HTMLSelectElement).disabled = true;
+    (document.getElementById("zona") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
     this.precioPiso.getZona(this.correo).subscribe(res => {
-      console.log(res)
       this.zona = res;
+      (document.getElementById("zona") as HTMLSelectElement).disabled = false;
+      (document.getElementById("zona") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
     });
 
     this.validaVacios();
