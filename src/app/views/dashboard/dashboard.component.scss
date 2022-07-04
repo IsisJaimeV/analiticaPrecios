@@ -60,7 +60,7 @@ table {
 
 .containerTabla {
     height: 500px;
-    overflow-y: visible;
+    overflow-x: visible;
 }
 
 .separador {
@@ -389,10 +389,10 @@ table {
         width: 95vw;
     }
     .precioColumna {
-        width: 50%;
+        width: 35%;
     }
     .facturacion {
-        width: 50% !important;
+        width: 35% !important;
     }
 }
 
@@ -545,6 +545,13 @@ input:checked+.slider:before {
 @media (max-width:820px) {
     body {
         overflow-x: hidden;
+    }
+    tbody {
+        tr {
+            td {
+                font-size: 6px;
+            }
+        }
     }
     .icon {
         width: 8% !important;
