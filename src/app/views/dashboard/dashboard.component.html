@@ -3,7 +3,7 @@
     <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
         <div class="row">
             <div class="col">
-                <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
+                <img src="../../../assets/icons/icon-linea.png" class="ms-3 icon"> Linea:
                 <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" id="linea" autocomplete="off">
                 <datalist id="filterLinea">
                     <option [value]="item.linea" *ngFor="let item of linea">
@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-3 rightBorder">
                 <div class="ms-3 d-flex align-items-center">
-                    <img src="../../../assets/img/cypto.png" class="icon-crypto"> Distribuye Cryoinfra
+                    <img src="../../../assets/img/crypto.png" class="icon-crypto"> Distribuye Cryoinfra
                     <label class="switch ms-4">
                         <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra" (change)="loaderCheckbox(filterForm.value)" > <!--(click)="loaderCheckbox(filterForm.value)"-->
                         <span class="slider round" checked></span>
@@ -178,14 +178,14 @@
         </div>
         <div class="col mt-5 me-4 ms-4 resultados mb-2 ">
             <div class="row tituloResultados ">
-                <div class="ms-5 mt-3 ">
-                    <i class="fa fa-bar-chart me-2 mt-4 "></i>
-                    <span>Gráfica </span>
+                <div class="ms-5 mt-4 ">
+                    <img src="../../../assets/icons/icon-grafica.png" class="ms-3 icon">
+                    <span>  Gráfica </span>
                     <span style="color: #EF872F; ">Resultados</span>
                 </div>
             </div>
             <div class="row mt-5 text-center chart ">
-                <div class="d-flex justify-content-center ">
+                <div class="d-flex justify-content-center mt-5">
                     <div class="gauge-wraper ">
                         <div class="gauge " data-value="123L ">
                             <div class="range first-half "></div>
