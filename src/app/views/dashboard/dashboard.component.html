@@ -60,85 +60,85 @@
         <div class="col-md-8 mt-5">
             <div class="containerTabla">
                 <div class="ms-3 mt-4">
-                    <table class="table table-condensed text-start">
+                    <table class="table table-condensed text-center">
                         <thead>
                             <tr style="background-color: transparent !important; border-bottom: hidden;">
                                 <td COLSPAN=1></td>
                                 <td COLSPAN=2 class="spanPrecioPropuesto borderTopLeft">
-                                    <div class="text-center">Precio piso</div>
+                                    <div class="">Precio piso</div>
                                 </td>
                                 <td COLSPAN=2 class="spanPrecioPiso borderTopLeft">
-                                    <div class="text-center">Precio propuesto</div>
+                                    <div class="">Precio propuesto</div>
                                 </td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="col-md-3 precioColumna" style="font-family: Roboto-Bold; color: #5B9BD5; font-size: 1.3em; text-align: left !important;">PRECIO</td>
-                                <td class="spacer borderLateralIzq">$ {{preciopisoGral | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer">{{porpreciopisoGral | number : '1.1'}} %</td>
-                                <td class="spacer">$ {{pppreciopisoGral | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer">{{ppporpreciopisoGral | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq">$ {{preciopisoGral | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer">{{porpreciopisoGral | number : '1.1'}} %</td>
+                                <td class="text-center">$ {{pppreciopisoGral | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer">{{ppporpreciopisoGral | number : '1.1'}} %</td>
 
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color1 "></canvas> Costo de venta</td>
-                                <td class="spacer borderLateralIzq ">$ {{costoVta | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{porcostoVta | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppcostoVta | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{ppporcostoVta | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{costoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{porcostoVta | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppcostoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{ppporcostoVta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color2 "></canvas>Gasto de mantenimiento cryogénico y envases</td>
-                                <td class="spacer borderLateralIzq ">$ {{gastoCryo | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{porgastoCryo | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppgastoCryo | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{ppporgastoCryo | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{gastoCryo | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{porgastoCryo | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppgastoCryo | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{ppporgastoCryo | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color3 "></canvas>Gasto distribución</td>
-                                <td class="spacer borderLateralIzq ">$ {{gastoDist | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{porgastoDist | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppgastoDist | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{ppporgastoDist | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{gastoDist | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{porgastoDist | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppgastoDist | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{ppporgastoDist | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color4 "></canvas>Depreciación de activos</td>
-                                <td class="spacer borderLateralIzq ">$ {{depreciacion | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{pordepreciacion | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppdepreciacion | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{pppordepreciacion | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{depreciacion | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{pordepreciacion | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppdepreciacion | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{pppordepreciacion | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado " style="text-align: left !important; ">
                                     <span>Utilidad operativa antes de gastos de venta y administracion</span>
                                 </td>
-                                <td class="txtResaltado spacer borderLateralIzq ">$ {{utilidadOperativaSinGVyGADM | number : '1.2'}}</td>
-                                <td class="txtResaltado spacer borderLateralDer ">{{porutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
-                                <td class="txtResaltado spacer ">$ {{pputilidadOperativaSinGVyGADM | number : '1.2'}}</td>
-                                <td class="txtResaltado spacer borderLateralDer ">{{ppporutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
+                                <td class="txtResaltado text-center borderLateralIzq ">$ {{utilidadOperativaSinGVyGADM | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralDer ">{{porutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
+                                <td class="txtResaltado text-center ">$ {{pputilidadOperativaSinGVyGADM | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralDer ">{{ppporutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
 
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color5 "></canvas>Gasto de venta</td>
-                                <td class="spacer borderLateralIzq ">$ {{gastoVta | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{porgastoVta | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppgastoVta | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{ppporgastoVta | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{gastoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{porgastoVta | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppgastoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{ppporgastoVta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color6 "></canvas>Gasto de administración</td>
-                                <td class="spacer borderLateralIzq ">$ {{gastoAdm | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{porgastoAdm | number : '1.1'}} %</td>
-                                <td class="spacer ">$ {{ppgastoAdm | number : '1.2'}}</td>
-                                <td class="spacer borderLateralDer ">{{ppporgastoAdm | number : '1.1'}} %</td>
+                                <td class="text-center borderLateralIzq ">$ {{gastoAdm | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{porgastoAdm | number : '1.1'}} %</td>
+                                <td class="text-center ">$ {{ppgastoAdm | number : '1.2'}}</td>
+                                <td class="text-center borderLateralDer ">{{ppporgastoAdm | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado " style="text-align: left !important; "><canvas class="color7 "></canvas>Utilidad operativa neta</td>
-                                <td class="txtResaltado spacer borderLateralIzq ">$ {{utilidadOperativaNeta | number : '1.2'}}</td>
-                                <td class="txtResaltado spacer borderLateralDer ">{{porutilidadOperativaNeta | number : '1.1'}} %</td>
-                                <td class="txtResaltado spacer ">$ {{pputilidadOperativaNeta | number : '1.2'}}</td>
-                                <td class="txtResaltado spacer borderLateralDer ">{{ppporutilidadOperativaNeta | number : '1.1'}} %</td>
+                                <td class="txtResaltado text-center borderLateralIzq ">$ {{utilidadOperativaNeta | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralDer ">{{porutilidadOperativaNeta | number : '1.1'}} %</td>
+                                <td class="txtResaltado text-center ">$ {{pputilidadOperativaNeta | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralDer ">{{ppporutilidadOperativaNeta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td COLSPAN=1></td>
@@ -147,27 +147,27 @@
                             </tr>
                             <tr>
                                 <td class="txtResaltado col-md-3 facturacion " COLSPAN=1><span>Facturación <b>anual</b></span></td>
-                                <td class="gridTabla1 col-md-2 borderBottom padding-negative " COLSPAN=2>$ {{tpfacturacionAnual | number}}</td>
-                                <td class="gridTabla2 col-md-2 borderBottom padding-negative " COLSPAN=2>$ {{tppfacturacionAnual | number}}</td>
+                                <td class="gridTabla1 col-md-2 borderBottom " COLSPAN=2 style="padding-left: 18px;">$ {{tpfacturacionAnual | number}}</td>
+                                <td class="gridTabla2 col-md-2 borderBottom " COLSPAN=2 style="padding-left: 18px;">$ {{tppfacturacionAnual | number}}</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa antes de GV & GADM
                                         <b>anual</b></span></td>
-                                <td class="gridTabla1 borderLateralIzq borderBottom spacer-utility " COLSPAN=2><span>$ {{tputilidadOperativaSinGVyGADM | number}}</span></td>
-                                <td class="gridTabla2 borderBottom spacer-utility " COLSPAN=2><span>$ {{tpputilidadOperativaSinGVyGADM | number}}</span></td>
+                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>$ {{tputilidadOperativaSinGVyGADM | number}}</span></td>
+                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>$ {{tpputilidadOperativaSinGVyGADM | number}}</span></td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa neta <b>anual</b></span></td>
-                                <td class="gridTabla1 borderLateralIzq borderBottom spacer-utility " COLSPAN=2><span>$ {{tputilidadOperativaNeta  | number}}</span></td>
-                                <td class="gridTabla2 borderBottom spacer-utility " COLSPAN=2><span>$ {{tpputilidadOperativaNeta | number}}</span></td>
+                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>$ {{tputilidadOperativaNeta  | number}}</span></td>
+                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>$ {{tpputilidadOperativaNeta | number}}</span></td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA)
                                         <b>anual</b></span></td>
-                                <td class="gridTabla1 borderInferiorIzq spacer-utility " COLSPAN=2>
+                                <td class="gridTabla1 borderInferiorIzq " COLSPAN=2>
                                     <span>$ {{tputilidadOperativaNetaCryoInfra | number}}</span>
                                 </td>
-                                <td class="gridTabla2 borderInferiorDer spacer-utility " COLSPAN=2>
+                                <td class="gridTabla2 borderInferiorDer " COLSPAN=2>
                                     <span>$ {{tpputilidadOperativaNetaCryoInfra | number}}</span>
                                 </td>
                             </tr>
