@@ -59,8 +59,8 @@ table {
 }
 
 .containerTabla {
-    //height: 500px;
-    //overflow-x: visible;
+    height: 500px;
+    overflow-x: visible;
 }
 
 .separador {
@@ -149,7 +149,6 @@ table {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     border-bottom: 0.5px dashed transparent !important;
-    max-width: 30%;
     .tituloResultados {
         font-family: Roboto-Semibold !important;
         color: #1F3569 !important;
@@ -158,7 +157,7 @@ table {
         }
     }
     img {
-        width: 50%;
+        width: 5%;
     }
     .posible {
         background: #FFFFFF;
@@ -228,9 +227,9 @@ table {
 }
 
 @media (max-width:820px) {
-    .resultados {
-        img {
-            width: 100% !important;
+    .tituloResultados {
+        span {
+            font-size: 1.5em;
         }
     }
     table {
@@ -243,15 +242,72 @@ table {
         overflow-x: scroll;
     }
     .containerTabla {
-        //height: 550px;
-        //overflow-y: visible;
+        height: 550px;
+        overflow-y: visible;
     }
     span {
         text-align: center;
     }
+    .resultados {
+        margin-top: -10px !important;
+        span {
+            font-size: 0.6em;
+        }
+        p {
+            font-size: 0.7em;
+        }
+    }
+    body {
+        overflow-x: hidden;
+    }
+    tbody {
+        tr {
+            td {
+                font-size: 6px;
+            }
+        }
+    }
+    .icon {
+        width: 5% !important;
+    }
+    .icon-grafica {
+        width: 5% !important;
+    }
+    .row {
+        .col {
+            .icon-precio {
+                width: 8% !important;
+            }
+            .icon-precio {
+                margin-left: -2px!important;
+            }
+            input {
+                width: 40vw !important;
+            }
+            select {
+                width: 40vw !important;
+            }
+        }
+    }
+    .col-btnSimulacion {
+        padding: 3vh !important;
+        .simulacion {
+            width: 40%;
+        }
+    }
+    .simulacion {
+        margin-top: -20px;
+    }
 }
 
 @media (max-width:540px) {
+    .containerTabla {
+        height: 600px;
+        width: 95vw !important;
+    }
+    .resultados {
+        width: 95vw !important;
+    }
     .facturacion {
         width: 55%!important;
     }
@@ -262,9 +318,6 @@ table {
     .utilidadOperativa {
         margin-right: -170px !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .gastosVentaValor,
     .gastosCryogénicoValor,
@@ -275,45 +328,21 @@ table {
         margin-top: 55px !important;
         margin-right: -55px !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .gastosCryogénico {
         margin-left: -110px !important;
         margin-top: 40px !important;
         font-size: 0.8em !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .costosVenta {
         font-size: 0.8em !important;
         margin-left: -220px !important;
-        span {
-            color: white !important;
-        }
     }
     .costoOportunidad {
         span {
             font-size: 0.6em !important;
         }
-    }
-}
-
-@media (max-width:820px) {
-    .resultados {
-        margin-top: -10px !important;
-        span {
-            font-size: 0.6em;
-        }
-        p {
-            font-size: 0.7em;
-        }
-      margin-top: 20px !important;
-      max-width: 98% !important;
-      margin: 0;
     }
 }
 
@@ -328,9 +357,6 @@ table {
     .utilidadOperativa {
         margin-right: -170px !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .gastosVentaValor,
     .gastosCryogénicoValor,
@@ -341,25 +367,16 @@ table {
         margin-top: 55px !important;
         margin-right: -55px !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .gastosCryogénico {
         margin-left: -110px !important;
         margin-top: 40px !important;
         font-size: 0.8em !important;
         font-size: 0.8em !important;
-        span {
-            color: white !important;
-        }
     }
     .costosVenta {
         font-size: 0.8em !important;
         margin-left: -220px !important;
-        span {
-            color: white !important;
-        }
     }
     .costoOportunidad {
         span {
@@ -371,7 +388,6 @@ table {
 @media (max-width:370px) {
     .resultados {
         margin-top: 10px !important;
-      width: 100% !important;
     }
 }
 
@@ -383,21 +399,66 @@ table {
 
 @media (max-width:1024px) {
     .containerTabla {
-        //height: 610px;
-        //width: 95vw;
+        height: 610px;
+        width: 95vw;
+    }
+    .gauge-wraper {
+        width: 200px !important;
+        height: 120px !important;
+    }
+    .gauge {
+        bottom: -80% !important;
+        width: 180px !important;
+        height: 180px !important;
+    }
+    .gauge-meter::after {
+        left: -50px !important;
+        border-right: 60px solid rgb(202 202 202) !important;
+    }
+    .precioPropuesto {
+        margin-top: -50px;
+    }
+    .precioPiso {
+        margin-top: 120px !important;
+        margin-right: -45px;
+    }
+    .utilidadOperativa {
+        margin-top: 80px !important;
+        margin-right: -250px !important;
+    }
+    .gastosVenta {
+        margin-top: -10px !important;
+    }
+    .gastosCryogénico {
+        margin-top: -10px !important;
+        margin-left: -180px !important;
+    }
+    .costosVenta {
+        margin-left: -250px !important;
+        margin-top: 80px !important;
     }
 }
 
 @media (max-width:912px) {
     .containerTabla {
-        //height: 600px;
-        //width: 95vw;
+        height: 600px;
+        width: 95vw;
     }
     .precioColumna {
         width: 35%;
     }
     .facturacion {
         width: 35% !important;
+    }
+}
+
+@media (max-width:1024px) {
+    .containerTabla {
+        height: 600px;
+        width: 65vw;
+    }
+    .resultados {
+        width: 20vw;
     }
 }
 
@@ -410,10 +471,6 @@ table {
         color: #575756;
         font-size: 1em !important;
         .col,
-        .col-1,
-        .col-2,
-        .col-3,
-        .col-4,
         .rightBorder {
             padding: 10px;
             border-bottom: 0.5px dashed #ACACA5;
@@ -548,52 +605,6 @@ input:checked+.slider:before {
     }
     img {
         width: 12% !important;
-    }
-}
-
-@media (max-width:820px) {
-    body {
-        overflow-x: hidden;
-    }
-    tbody {
-        tr {
-            td {
-                font-size: 6px;
-            }
-        }
-    }
-    .icon {
-        width: 8% !important;
-    }
-    .row {
-        .col,
-        .col-1,
-        .col-2,
-        .col-3,
-        .col-4 {
-            .icon,
-            .icon-precio {
-                width: 8% !important;
-            }
-            .icon-precio {
-                margin-left: -2px!important;
-            }
-            input {
-                width: 40vw !important;
-            }
-            select {
-                width: 40vw !important;
-            }
-        }
-    }
-    .col-btnSimulacion {
-        padding: 3vh !important;
-        .simulacion {
-            width: 40%;
-        }
-    }
-    .simulacion {
-        margin-top: -20px;
     }
 }
 
@@ -740,5 +751,5 @@ input:checked+.slider:before {
 }
 
 .padding-facturacion {
-  padding-left: 2%;
+    padding-left: 2%;
 }
