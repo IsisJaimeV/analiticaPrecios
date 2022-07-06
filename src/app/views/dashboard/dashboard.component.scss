@@ -59,8 +59,8 @@ table {
 }
 
 .containerTabla {
-    height: 500px;
-    overflow-x: visible;
+    //height: 500px;
+    //overflow-x: visible;
 }
 
 .separador {
@@ -149,6 +149,7 @@ table {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     border-bottom: 0.5px dashed transparent !important;
+    max-width: 30%;
     .tituloResultados {
         font-family: Roboto-Semibold !important;
         color: #1F3569 !important;
@@ -242,8 +243,8 @@ table {
         overflow-x: scroll;
     }
     .containerTabla {
-        height: 550px;
-        overflow-y: visible;
+        //height: 550px;
+        //overflow-y: visible;
     }
     span {
         text-align: center;
@@ -310,6 +311,9 @@ table {
         p {
             font-size: 0.7em;
         }
+      margin-top: 20px !important;
+      max-width: 98% !important;
+      margin: 0;
     }
 }
 
@@ -367,6 +371,7 @@ table {
 @media (max-width:370px) {
     .resultados {
         margin-top: 10px !important;
+      width: 100% !important;
     }
 }
 
@@ -378,15 +383,15 @@ table {
 
 @media (max-width:1024px) {
     .containerTabla {
-        height: 610px;
-        width: 95vw;
+        //height: 610px;
+        //width: 95vw;
     }
 }
 
 @media (max-width:912px) {
     .containerTabla {
-        height: 600px;
-        width: 95vw;
+        //height: 600px;
+        //width: 95vw;
     }
     .precioColumna {
         width: 35%;
@@ -405,6 +410,10 @@ table {
         color: #575756;
         font-size: 1em !important;
         .col,
+        .col-1,
+        .col-2,
+        .col-3,
+        .col-4,
         .rightBorder {
             padding: 10px;
             border-bottom: 0.5px dashed #ACACA5;
@@ -557,7 +566,11 @@ input:checked+.slider:before {
         width: 8% !important;
     }
     .row {
-        .col {
+        .col,
+        .col-1,
+        .col-2,
+        .col-3,
+        .col-4 {
             .icon,
             .icon-precio {
                 width: 8% !important;

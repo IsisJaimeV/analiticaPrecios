@@ -1,63 +1,63 @@
 <app-header></app-header>
 <div class="container-fluid">
-    <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
-        <div class="row">
-            <div class="col">
-                <img src="../../../assets/icons/icon-linea.png" class="ms-3 icon"> Linea:
-                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" id="linea" autocomplete="off">
-                <datalist id="filterLinea">
-                    <option [value]="item.linea" *ngFor="let item of linea">
-                        {{item.linea}} {{item.descripcion}}
-                    </option>
-                </datalist>
-            </div>
-            <div class="col">
-                <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
-                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" (keydown)="borradoSpanCodigo($event)" style="width: 11vw;" id="codigo" autocomplete="off">
-                <datalist required id="filterCodigo">
-                    <option [value]="item.codigo" *ngFor="let item of codigo">
-                        {{item.codigo}} {{item.descripcion}}
-                    </option>
-                </datalist>
-            </div>
-            <div class="col primeraColumna">
-                <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <select formControlName="zona" list="filterZona" name="filterZona" id="zona" style="width: 11vw;" autocomplete="off" (change)="validaZona($event)">
-                    <option value="" disabled selected hidden>Selecciona una Zona</option>
-                    <option [value]="item.nombre" *ngFor="let item of zona">
-                        {{item.nombre}}
-                    </option>
-                </select>
-            </div>
-            <div class="col">
-                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
-            </div>
-            <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" autocomplete="off">
-                <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 rightBorder">
-                <div class="ms-3 d-flex align-items-center">
-                    <img src="../../../assets/img/crypto.png" class="icon-crypto"> Distribuye Cryoinfra
-                    <label class="switch ms-4">
-                        <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra" (change)="loaderCheckbox(filterForm.value)" > <!--(click)="loaderCheckbox(filterForm.value)"-->
-                        <span class="slider round" checked></span>
-                    </label>
-                </div>
-            </div>
-            <div class="col text-center d-flex align-items-center">
-                <span style="font-size: 0.8em;" id="codigoSpan">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
-            </div>
-            <div class="col col-btnSimulacion">
-                <button class="btn btn-primary simulacion me-4" id="simulacion" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
-                        Ejecutar</b> simulación </button>
-            </div>
-        </div>
-    </form>
+  <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
     <div class="row">
-        <div class="col-md-8 mt-5">
+      <div class="col">
+        <img src="../../../assets/icons/icon-linea.png" class="ms-3 icon"> Linea:
+        <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 9vw;" id="linea" autocomplete="off">
+        <datalist id="filterLinea">
+          <option [value]="item.linea" *ngFor="let item of linea">
+            {{item.linea}} {{item.descripcion}}
+          </option>
+        </datalist>
+      </div>
+      <div class="col">
+        <img src="../../../assets/icons/icon-codigo.png" class="ms-2 icon"> Código:
+        <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" (keydown)="borradoSpanCodigo($event)" style="width: 8vw;" id="codigo" autocomplete="off">
+        <datalist required id="filterCodigo">
+          <option [value]="item.codigo" *ngFor="let item of codigo">
+            {{item.codigo}} {{item.descripcion}}
+          </option>
+        </datalist>
+      </div>
+      <div class="col primeraColumna">
+        <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
+        <select formControlName="zona" list="filterZona" name="filterZona" id="zona" style="width: 11vw;" autocomplete="off" (change)="validaZona($event)">
+          <option value="" disabled selected hidden>Selecciona una Zona</option>
+          <option [value]="item.nombre" *ngFor="let item of zona">
+            {{item.nombre}}
+          </option>
+        </select>
+      </div>
+      <div class="col col-sm-3">
+        <img src="../../../assets/icons/icon-precio.png" class="icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
+      </div>
+      <div class="col">
+        <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" autocomplete="off">
+        <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 rightBorder">
+        <div class="ms-3 d-flex align-items-center">
+          <img src="../../../assets/img/crypto.png" class="icon-crypto"> Distribuye Cryoinfra
+          <label class="switch ms-4">
+            <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra" (change)="loaderCheckbox(filterForm.value)" > <!--(click)="loaderCheckbox(filterForm.value)"-->
+            <span class="slider round" checked></span>
+          </label>
+        </div>
+      </div>
+      <div class="col text-center d-flex align-items-center">
+        <span style="font-size: 0.8em;" id="codigoSpan">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
+      </div>
+      <div class="col col-btnSimulacion">
+        <button class="btn btn-primary simulacion me-4" id="simulacion" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
+          Ejecutar</b> simulación </button>
+      </div>
+    </div>
+  </form>
+  <div class="row mt-5">
+        <div class="col-sm-8">
             <div class="containerTabla">
                 <div class="ms-3 mt-4">
                     <table class="table table-condensed text-center">
@@ -176,7 +176,7 @@
                 </div>
             </div>
         </div>
-        <div class="col mt-5 me-4 ms-4 resultados mb-2 ">
+        <div class="col resultados mb-2 ">
             <div class="row tituloResultados ">
                 <div class="ms-5 mt-4 ">
                     <img src="../../../assets/icons/icon-grafica.png" class="ms-3 icon">
