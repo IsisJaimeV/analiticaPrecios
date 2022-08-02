@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoadingComponent } from './views/loading/loading.component';  
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoadingComponent } from './views/loading/loading.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule ,
+    NgxSpinnerModule,
+    NgxCurrencyModule
   ],
   providers: [], 
   bootstrap: [AppComponent]

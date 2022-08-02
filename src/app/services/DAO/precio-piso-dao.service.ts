@@ -18,7 +18,7 @@ export class PrecioPisoDAOService {
 
         const headers = {
             'Content-Type': 'application/json; charset=utf-8',
-            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f',
+            'Ocp-Apim-Subscription-Key': environment.subscriptionKey,
             'Authorization':  `Bearer ${json.token}`
         }
 
@@ -30,21 +30,21 @@ export class PrecioPisoDAOService {
 
     getLinea(): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
+            'Ocp-Apim-Subscription-Key': environment.subscriptionKey
         }
         return this.http.get(environment.endp_linea, { 'headers': headers })
     }
 
     getCodigo(linea: any): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
+            'Ocp-Apim-Subscription-Key': environment.subscriptionKey
         }
         return this.http.get(environment.endp_codigo + linea, { 'headers': headers })
     }
 
     getZona(correo: string): Observable<any> {
         const headers = {
-            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
+            'Ocp-Apim-Subscription-Key': environment.subscriptionKey
         }
 
         return this.http.get(environment.endp_zona + correo, { 'headers': headers })
@@ -63,14 +63,24 @@ export class PrecioPisoDAOService {
         }
     }
 
+
     getDatos(form: Object): Observable<any> {
         const headers = {
             'Content-Type': 'application/json; charset=utf-8',
-            'Ocp-Apim-Subscription-Key': '802ac063011f4cf9b2ff79d781cca71f'
+            'Ocp-Apim-Subscription-Key': environment.subscriptionKey
         }
 
         const body = JSON.stringify(form);
         const json = JSON.parse(body);
+
+        json.correo = localStorage.getItem("user");
+        json.sourceId = 1;
+
+        json.volumen = Number(json.volumen.replace(/[^\d\.\-eE+]/g, ""))
+        
+        if(json.propuesto == 0){
+            json.propuesto = ""
+        }
 
         this.eliminarVacios(json);
         return this.http.post(environment.endp_precioPiso, json, { 'headers': headers });

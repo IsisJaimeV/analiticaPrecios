@@ -153,11 +153,11 @@ table {
         font-family: Roboto-Semibold !important;
         color: #1F3569 !important;
         span {
-            font-size: 1.1em;
+            font-size: 1.7em;
         }
     }
     img {
-        width: 5%;
+        width: 3%;
     }
     .posible {
         background: #FFFFFF;
@@ -166,14 +166,15 @@ table {
         border-bottom: 2px dashed transparent !important;
         .division {
             z-index: 2 !important;
-            font-size: 0.8em;
-            line-height: 1em;
             font-family: Roboto-Semibold;
             font-size: 0.7em !important;
             color: #1F3569;
             text-align: center;
             margin-top: 10px;
             border-bottom: 2px dashed #1F3569;
+            p {
+                font-size: 1.1em;
+            }
         }
         .valor {
             font-size: 1em !important;
@@ -203,8 +204,8 @@ table {
     margin-bottom: -20px;
     width: 60%;
     img {
-        margin-left: 1vw !important;
-        width: 70% !important;
+        margin-left: 1.8vw !important;
+        width: 50% !important;
     }
 }
 
@@ -223,6 +224,15 @@ table {
     border-radius: 8px;
     svg {
         font-size: 0.6em;
+    }
+}
+
+@media (max-width:1024px) {
+    .diferencia {
+        img {
+            margin-left: 1.1vw !important;
+            width: 70% !important;
+        }
     }
 }
 
@@ -271,7 +281,7 @@ table {
         width: 5% !important;
     }
     .icon-grafica {
-        width: 5% !important;
+        width: 3% !important;
     }
     .row {
         .col {
@@ -397,7 +407,7 @@ table {
     }
 }
 
-@media (max-width:1024px) {
+@media (max-width:380px) {
     .containerTabla {
         height: 610px;
         width: 95vw;
@@ -419,15 +429,17 @@ table {
         margin-top: -50px;
     }
     .precioPiso {
+        font-size: 1em !important;
         margin-top: 120px !important;
         margin-right: -45px;
     }
     .utilidadOperativa {
         margin-top: 80px !important;
-        margin-right: -250px !important;
+        margin-right: -200px !important;
     }
     .gastosVenta {
         margin-top: -10px !important;
+        margin-right: -100px !important;
     }
     .gastosCryogénico {
         margin-top: -10px !important;
@@ -482,7 +494,6 @@ table {
             }
             input {
                 font-family: Roboto-Light;
-                width: 29%;
                 height: 20px;
                 background: #F2F2F2;
                 box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -519,6 +530,10 @@ table {
             border-right: 0.5px dashed #ACACA5;
         }
     }
+}
+
+.spanMXN {
+    font-size: 0.7em;
 }
 
 
@@ -614,11 +629,12 @@ input:checked+.slider:before {
 .precioPropuesto {
     font-family: Roboto-Semibold !important;
     margin-top: -50px;
+    font-size: 0.7em;
 }
 
 .precioPiso {
     font-family: Roboto-Semibold !important;
-    font-size: 0.6em;
+    font-size: 0.7em;
     float: right;
     margin-top: 150px;
     margin-right: -45px;
@@ -644,7 +660,7 @@ input:checked+.slider:before {
 
 .gastosVentaValor {
     font-family: Roboto-Semibold !important;
-    font-size: 0.9em;
+    font-size: 0.7em;
     position: absolute;
     margin-top: 40px;
     margin-left: 250px;
@@ -660,7 +676,7 @@ input:checked+.slider:before {
 
 .gastosCryogénicoValor {
     font-family: Roboto-Semibold !important;
-    font-size: 0.9em;
+    font-size: 0.7em;
     position: absolute;
     margin-top: -5px;
     margin-left: -30px;
@@ -676,7 +692,7 @@ input:checked+.slider:before {
 
 .costosVentaValor {
     font-family: Roboto-Semibold !important;
-    font-size: 0.9em;
+    font-size: 0.7em;
     position: absolute;
     margin-top: 40px;
     margin-left: -280px;

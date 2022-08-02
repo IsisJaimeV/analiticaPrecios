@@ -96,6 +96,41 @@ export class DashboardComponent implements OnInit {
   selectedUMSpan: string = '';
   child: boolean = false;
 
+  //SIMBOL NEGATIVE - POSITIVE
+  spanSimbolo: string = "$";
+
+  spanSimbolopreciopisoGral: string = "$";
+  spancostoVta: string = "$";
+  spangastoCryo: string = "$";
+  spangastoDist: string = "$";
+  spandepreciacion: string = "$";
+  spanutilidadOperativaSinGVyGADM: string = "$";
+  spangastoVta: string = "$";
+  spangastoAdm: string = "$";
+  spanutilidadOperativaNeta: string = "$";
+  spanpppreciopisoGral: string = "$";
+  spanppcostoVta: string = "$";
+  spanppgastoCryo: string = "$";
+  spanppgastoDist: string = "$"
+  spanppdepreciacion: string = "$";
+  spanpputilidadOperativaSinGVyGADM: string = "$";
+  spanppgastoVta: string = "$";
+  spanppgastoAdm: string = "$";
+  spanpputilidadOperativaNeta: string = "$";
+  spantpfacturacionAnual: string = "$";
+  spantputilidadOperativaNeta: string = "$";
+  spantputilidadOperativaNetaCryoInfra: string = "$";
+  spantputilidadOperativaSinGVyGADM: string = "$";
+  spantppfacturacionAnual: string = "$";
+  spantpputilidadOperativaNeta: string = "$";
+  spantpputilidadOperativaNetaCryoInfra: string = "$";
+  spantpputilidadOperativaSinGVyGADM: string = "$";
+  spanchartPrecioPropuesto = "$";
+  spanchartPrecioPiso = "$";
+  spanchartCostoVenta = "$";
+  spanchartGastoCryogenico = "$";
+  spanchartGastosVenta = "$";
+  spandifPrePropuestoVSPrePiso = "$";
 
   //FORM
   filterForm = new FormGroup({
@@ -115,6 +150,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.selectLinea();
     this.selectZona();
+    this.separadorMiles();
   }
 
   validaVacios() {
@@ -176,7 +212,7 @@ export class DashboardComponent implements OnInit {
 
     var codigo = this.codigo.find(resp => resp.codigo == value)
     try {
-      this.selectedDescripcionSpan = codigo.descripcion; 
+      this.selectedDescripcionSpan = codigo.descripcion;
       this.selectedUMSpan = codigo.um;
       this.selectedCodigoSpan = value;
     } catch { }
@@ -184,9 +220,9 @@ export class DashboardComponent implements OnInit {
   }
 
   borradoSpanCodigo(event: any) {
-    if(event.key != undefined){
+    if (event.key != undefined) {
       this.selectedCodigoSpan = "";
-    this.selectedDescripcionSpan = "";
+      this.selectedDescripcionSpan = "";
     }
   }
 
@@ -204,6 +240,20 @@ export class DashboardComponent implements OnInit {
     this.validaVacios();
   }
 
+  separadorMiles() {
+    $("#volumen").on({
+      "focus": function (event: { target: any; }) {
+        $(event.target).select();
+      },
+      "keyup": function (event: { target: any; }) {
+        $(event.target).val(function (index: any, value: string) {
+          return value.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{0})$/, '$1')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+      }
+    });
+  }
   validaZona(e: any) {
     this.validaVacios();
   }
@@ -266,10 +316,13 @@ export class DashboardComponent implements OnInit {
 
       //UTILIDAD OPERATIVA NETA
       const utilidad = this.pputilidadOperativaNeta;
-      if (utilidad >= 0) {
+      if (utilidad >= 1) {
         this.utilidadNeta = 'Positiva "Creación de Valor"';
         $('#utilidadNetaText').css('color', 'green');
-      } else {
+      } if (utilidad > 0 && utilidad < 1) {
+        this.utilidadNeta = 'Sin Creación de Valor';
+        $('#utilidadNetaText').css('color', 'blue');
+      } if (utilidad <= 0) {
         this.utilidadNeta = 'Negativa "Destrucción de Valor"';
         $('#utilidadNetaText').css('color', 'red');
       }
@@ -327,6 +380,202 @@ export class DashboardComponent implements OnInit {
       } else {
         $('#difPrePropuestoVSPrePiso').css('color', 'red');
       }
+
+      //CAMBIO DE SIMBOLO NEGATIVO
+      if (this.preciopisoGral < 0) {
+        this.spanSimbolopreciopisoGral = "-$";
+        this.preciopisoGral = this.preciopisoGral * -1;
+      } else if (this.preciopisoGral >= 0) {
+        this.spanSimbolopreciopisoGral = "$";
+
+      } if (this.costoVta < 0) {
+        this.spancostoVta = "-$";
+        this.costoVta = this.costoVta * -1;
+      } else if (this.costoVta >= 0) {
+        this.spancostoVta = "$";
+
+      } if (this.gastoCryo < 0) {
+        this.spangastoCryo = "-$";
+        this.gastoCryo = this.gastoCryo * -1;
+      } else if (this.gastoCryo >= 0) {
+        this.spangastoCryo = "$";
+
+      } if (this.gastoDist < 0) {
+        this.spangastoDist = "-$";
+        this.gastoDist = this.gastoDist * -1;
+      } else if (this.gastoDist >= 0) {
+        this.spangastoDist = "$";
+
+      } if (this.depreciacion < 0) {
+        this.spandepreciacion = "-$";
+        this.depreciacion = this.depreciacion * -1;
+      } else if (this.depreciacion >= 0) {
+        this.spandepreciacion = "$";
+
+      } if (this.utilidadOperativaSinGVyGADM < 0) {
+        this.spanutilidadOperativaSinGVyGADM = "-$";
+        this.utilidadOperativaSinGVyGADM = this.utilidadOperativaSinGVyGADM * -1;
+      } else if (this.utilidadOperativaSinGVyGADM >= 0) {
+        this.spanutilidadOperativaSinGVyGADM = "$";
+
+      } if (this.gastoVta < 0) {
+        this.spangastoVta = "-$";
+        this.gastoVta = this.gastoVta * -1;
+      } else if (this.gastoVta >= 0) {
+        this.spangastoVta = "$";
+
+      } if (this.gastoAdm < 0) {
+        this.spangastoAdm = "-$";
+        this.gastoAdm = this.gastoAdm * -1;
+      } else if (this.gastoAdm >= 0) {
+        this.spangastoAdm = "$";
+
+      } if (this.utilidadOperativaNeta < 0) {
+        this.spanutilidadOperativaNeta = "-$";
+        this.utilidadOperativaNeta = this.utilidadOperativaNeta * -1;
+      } else if (this.utilidadOperativaNeta >= 0) {
+        this.spanutilidadOperativaNeta = "$";
+
+      } if (this.pppreciopisoGral < 0) {
+        this.spanpppreciopisoGral = "-$";
+        this.pppreciopisoGral = this.pppreciopisoGral * -1;
+      } else if (this.pppreciopisoGral >= 0) {
+        this.spanpppreciopisoGral = "$";
+
+      } if (this.ppcostoVta < 0) {
+        this.spanppcostoVta = "-$";
+        this.ppcostoVta = this.ppcostoVta * -1;
+      } else if (this.ppcostoVta >= 0) {
+        this.spanppcostoVta = "$";
+
+      } if (this.ppgastoCryo < 0) {
+        this.spanppgastoCryo = "-$";
+        this.ppgastoCryo = this.ppgastoCryo * -1;
+      } else if (this.ppgastoCryo >= 0) {
+        this.spanppgastoCryo = "$";
+
+      } if (this.ppgastoDist < 0) {
+        this.spanppgastoDist = "-$";
+        this.ppgastoDist = this.ppgastoDist * -1;
+      } else if (this.ppgastoDist >= 0) {
+        this.spanppgastoDist = "$";
+
+      } if (this.ppdepreciacion < 0) {
+        this.spanppdepreciacion = "-$";
+        this.ppdepreciacion = this.ppdepreciacion * -1;
+      } else if (this.ppdepreciacion >= 0) {
+        this.spanppdepreciacion = "$";
+
+      } if (this.pputilidadOperativaSinGVyGADM < 0) {
+        this.spanpputilidadOperativaSinGVyGADM = "-$";
+        this.pputilidadOperativaSinGVyGADM = this.pputilidadOperativaSinGVyGADM * -1;
+      } else if (this.pputilidadOperativaSinGVyGADM >= 0) {
+        this.spanpputilidadOperativaSinGVyGADM = "$";
+
+      } if (this.ppgastoVta < 0) {
+        this.spanppgastoVta = "-$";
+        this.ppgastoVta = this.ppgastoVta * -1;
+      } else if (this.ppgastoVta >= 0) {
+        this.spanppgastoVta = "$";
+
+      } if (this.ppgastoAdm < 0) {
+        this.spanppgastoAdm = "-$";
+        this.ppgastoAdm = this.ppgastoAdm * -1;
+      } else if (this.ppgastoAdm >= 0) {
+        this.spanppgastoAdm = "$";
+
+      } if (this.pputilidadOperativaNeta < 0) {
+        this.spanpputilidadOperativaNeta = "-$";
+        this.pputilidadOperativaNeta = this.pputilidadOperativaNeta * -1;
+      } else if (this.pputilidadOperativaNeta >= 0) {
+        this.spanpputilidadOperativaNeta = "$";
+
+      } if (this.tpfacturacionAnual < 0) {
+        this.spantpfacturacionAnual = "-$";
+        this.tpfacturacionAnual = this.tpfacturacionAnual * -1;
+      } else if (this.tpfacturacionAnual >= 0) {
+        this.spantpfacturacionAnual = "$";
+
+      } if (this.tputilidadOperativaNeta < 0) {
+        this.spantputilidadOperativaNeta = "-$";
+        this.tputilidadOperativaNeta = this.tputilidadOperativaNeta * -1;
+      } else if (this.tputilidadOperativaNeta >= 0) {
+        this.spantputilidadOperativaNeta = "$";
+
+      } if (this.tputilidadOperativaNetaCryoInfra < 0) {
+        this.spantputilidadOperativaNetaCryoInfra = "-$";
+        this.tputilidadOperativaNetaCryoInfra = this.tputilidadOperativaNetaCryoInfra * -1;
+      } else if (this.tputilidadOperativaNetaCryoInfra >= 0) {
+        this.spantputilidadOperativaNetaCryoInfra = "$";
+
+      } if (this.tputilidadOperativaSinGVyGADM < 0) {
+        this.spantputilidadOperativaSinGVyGADM = "-$";
+        this.tputilidadOperativaSinGVyGADM = this.tputilidadOperativaSinGVyGADM * -1;
+      } else if (this.tputilidadOperativaSinGVyGADM >= 0) {
+        this.spantputilidadOperativaSinGVyGADM = "$";
+
+      } if (this.tppfacturacionAnual < 0) {
+        this.spantppfacturacionAnual = "-$";
+        this.tppfacturacionAnual = this.tppfacturacionAnual * -1;
+      } else if (this.tppfacturacionAnual >= 0) {
+        this.spantppfacturacionAnual = "$";
+
+      } if (this.tpputilidadOperativaNeta < 0) {
+        this.spantpputilidadOperativaNeta = "-$";
+        this.tpputilidadOperativaNeta = this.tpputilidadOperativaNeta * -1;
+      } else if (this.tpputilidadOperativaNeta >= 0) {
+        this.spantpputilidadOperativaNeta = "$";
+
+      } if (this.tpputilidadOperativaNetaCryoInfra < 0) {
+        this.spantpputilidadOperativaNetaCryoInfra = "-$";
+        this.tpputilidadOperativaNetaCryoInfra = this.tpputilidadOperativaNetaCryoInfra * -1;
+      } else if (this.tpputilidadOperativaNetaCryoInfra >= 0) {
+        this.spantpputilidadOperativaNetaCryoInfra = "$";
+
+      } if (this.tpputilidadOperativaSinGVyGADM < 0) {
+        this.spantpputilidadOperativaSinGVyGADM = "-$";
+        this.tpputilidadOperativaSinGVyGADM = this.tpputilidadOperativaSinGVyGADM * -1;
+      } else if (this.tpputilidadOperativaSinGVyGADM >= 0) {
+        this.spantpputilidadOperativaSinGVyGADM = "$";
+
+      } if (this.chartPrecioPropuesto < 0) {
+        this.spanchartPrecioPropuesto = "-$";
+        this.chartPrecioPropuesto = this.chartPrecioPropuesto * -1;
+      } else if (this.chartPrecioPropuesto >= 0) {
+        this.spanchartPrecioPropuesto = "$";
+
+      } if (this.chartPrecioPiso < 0) {
+        this.spanchartPrecioPiso = "-$";
+        this.chartPrecioPiso = this.chartPrecioPiso * -1;
+      } else if (this.chartPrecioPiso >= 0) {
+        this.spanchartPrecioPiso = "$";
+
+      } if (this.chartCostoVenta < 0) {
+        this.spanchartCostoVenta = "-$";
+        this.chartCostoVenta = this.chartCostoVenta * -1;
+      } else if (this.chartCostoVenta >= 0) {
+        this.spanchartCostoVenta = "$";
+
+      } if (this.chartGastoCryogenico < 0) {
+        this.spanchartGastoCryogenico = "-$";
+        this.chartGastoCryogenico = this.chartGastoCryogenico * -1;
+      } else if (this.chartGastoCryogenico >= 0) {
+        this.spanchartGastoCryogenico = "$";
+
+      } if (this.chartGastosVenta < 0) {
+        this.spanchartGastosVenta = "-$";
+        this.chartGastosVenta = this.chartGastosVenta * -1;
+      } else if (this.chartGastosVenta >= 0) {
+        this.spanchartGastosVenta = "$";
+
+      } if (this.difPrePropuestoVSPrePiso < 0) {
+        this.spandifPrePropuestoVSPrePiso = "-$";
+        this.difPrePropuestoVSPrePiso = this.difPrePropuestoVSPrePiso * -1;
+      } else if (this.difPrePropuestoVSPrePiso >= 0) {
+        this.spandifPrePropuestoVSPrePiso = "$";
+      }
+
+
 
     }, (error) => {
 
@@ -409,6 +658,45 @@ export class DashboardComponent implements OnInit {
     this.chartCostoVenta = 0;
     this.chartGastoCryogenico = 0;
     this.chartGastosVenta = 0;
+
+
+    //LIMPIA SIMBOLO NEGATIVO
+    this.spancostoVta = "$";
+    this.spangastoCryo = "$";
+    this.spangastoDist = "$";
+    this.spandepreciacion = "$";
+    this.spanutilidadOperativaSinGVyGADM = "$";
+    this.spangastoVta = "$";
+    this.spangastoAdm = "$";
+    this.spanutilidadOperativaNeta = "$";
+    this.spanpppreciopisoGral = "$";
+    this.spanppcostoVta = "$";
+    this.spanppgastoCryo = "$";
+    this.spanppgastoDist = "$";
+    this.spanppdepreciacion = "$";
+    this.spanpputilidadOperativaNeta = "$";
+    this.spanpputilidadOperativaSinGVyGADM = "$";
+    this.spanppgastoVta = "$";
+    this.spanppgastoAdm = "$";
+    this.spantpfacturacionAnual = "$";
+    this.spantputilidadOperativaNeta = "$";
+    this.spantputilidadOperativaNetaCryoInfra = "$";
+    this.spantputilidadOperativaSinGVyGADM = "$";
+    this.spantppfacturacionAnual = "$";
+    this.spantpputilidadOperativaNeta = "$";
+    this.spantpputilidadOperativaNetaCryoInfra = "$";
+    this.spantpputilidadOperativaSinGVyGADM = "$";
+
+    this.spanchartPrecioPropuesto = "$";
+    this.spanchartPrecioPiso = "$";
+    this.spanchartCostoVenta = "$";
+    this.spanchartGastoCryogenico = "$";
+    this.spanchartGastosVenta = "$";
+    this.spandifPrePropuestoVSPrePiso = "$";
+
+    //CAMBIO DE COLOR
+    $('#utilidadNetaText').css('color', 'black');
+    $('#difPrePropuestoVSPrePiso').css('color', 'black');
   }
 
 }

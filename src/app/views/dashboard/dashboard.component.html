@@ -1,62 +1,64 @@
 <app-header></app-header>
 <div class="container-fluid">
-  <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
-    <div class="row">
-      <div class="col">
-        <img src="../../../assets/icons/icon-linea.png" class="ms-3 icon"> Linea:
-        <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 9vw;" id="linea" autocomplete="off">
-        <datalist id="filterLinea">
+    <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
+        <div class="row">
+            <div class="col" style="font-size: 0.8em;">
+                <img src="../../../assets/icons/icon-linea.png" class="ms-3 icon"> Linea agrupa:
+                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 36%" id="linea" autocomplete="off">
+                <datalist id="filterLinea">
           <option [value]="item.linea" *ngFor="let item of linea">
             {{item.linea}} {{item.descripcion}}
           </option>
         </datalist>
-      </div>
-      <div class="col">
-        <img src="../../../assets/icons/icon-codigo.png" class="ms-2 icon"> Código:
-        <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" (keydown)="borradoSpanCodigo($event)" style="width: 8vw;" id="codigo" autocomplete="off">
-        <datalist required id="filterCodigo">
+            </div>
+            <div class="col" style="font-size: 0.8em;">
+                <img src="../../../assets/icons/icon-codigo.png" class="ms-2 icon"> Código:
+                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" (keydown)="borradoSpanCodigo($event)" style="width: 8vw;" id="codigo" autocomplete="off">
+                <datalist required id="filterCodigo">
           <option [value]="item.codigo" *ngFor="let item of codigo">
             {{item.codigo}} {{item.descripcion}}
           </option>
         </datalist>
-      </div>
-      <div class="col primeraColumna">
-        <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-        <select formControlName="zona" list="filterZona" name="filterZona" id="zona" style="width: 11vw;" autocomplete="off" (change)="validaZona($event)">
+            </div>
+            <div class="col primeraColumna" style="font-size: 0.8em;">
+                <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
+                <select formControlName="zona" list="filterZona" name="filterZona" id="zona" style="width: 11vw;" autocomplete="off" (change)="validaZona($event)">
           <option value="" disabled selected hidden>Selecciona una Zona</option>
           <option [value]="item.nombre" *ngFor="let item of zona">
-            {{item.nombre}}
+            {{item.idZona}} {{item.nombre}}
           </option>
         </select>
-      </div>
-      <div class="col col-sm-3">
-        <img src="../../../assets/icons/icon-precio.png" class="icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
-      </div>
-      <div class="col">
-        <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" autocomplete="off">
-        <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 rightBorder">
-        <div class="ms-3 d-flex align-items-center">
-          <img src="../../../assets/img/crypto.png" class="icon-crypto"> Distribuye Cryoinfra
-          <label class="switch ms-4">
+            </div>
+            <div class="col col-sm-3" style="font-size: 0.8em;">
+                <img src="../../../assets/icons/icon-precio.png" class="icon-precio"> Precio propuesto <span class="spanMXN">(MXN) </span> <input type="text" formControlName="propuesto" id="precioPropuesto" autocomplete="off" style="width: 37%;" currencyMask
+                    [options]="{ prefix: '',  allowNegative: false}">
+            </div>
+            <div class="col" style="font-size: 0.8em;">
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen anual <input type="text" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" placeholder="0" autocomplete="off"
+                    style="width: 37%;">
+                <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 rightBorder">
+                <div class="ms-3 d-flex align-items-center">
+                    <img src="../../../assets/img/crypto.png" class="icon-crypto"> <span style="font-size: 0.8em;">Distribuye Cryoinfra</span>
+                    <label class="switch ms-4">
             <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra" (change)="loaderCheckbox(filterForm.value)" > <!--(click)="loaderCheckbox(filterForm.value)"-->
             <span class="slider round" checked></span>
           </label>
-        </div>
-      </div>
-      <div class="col text-center d-flex align-items-center">
-        <span style="font-size: 0.8em;" id="codigoSpan">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
-      </div>
-      <div class="col col-btnSimulacion">
-        <button class="btn btn-primary simulacion me-4" id="simulacion" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
+                </div>
+            </div>
+            <div class="col text-center d-flex align-items-center">
+                <span style="font-size: 0.8em;" id="codigoSpan">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
+            </div>
+            <div class="col col-btnSimulacion">
+                <button class="btn btn-primary simulacion me-4" id="simulacion" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
           Ejecutar</b> simulación </button>
-      </div>
-    </div>
-  </form>
-  <div class="row mt-5">
+            </div>
+        </div>
+    </form>
+    <div class="row mt-5">
         <div class="col-sm-8">
             <div class="containerTabla">
                 <div class="ms-3 mt-4">
@@ -75,69 +77,69 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-3 precioColumna" style="font-family: Roboto-Bold; color: #5B9BD5; font-size: 1.3em; text-align: left !important;">PRECIO</td>
-                                <td class="text-center borderLateralIzq">$ {{preciopisoGral | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq">{{spanSimbolopreciopisoGral}} {{preciopisoGral | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer">{{porpreciopisoGral | number : '1.1'}} %</td>
-                                <td class="text-center">$ {{pppreciopisoGral | number : '1.2'}}</td>
+                                <td class="text-center">{{spanpppreciopisoGral}} {{pppreciopisoGral | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer">{{ppporpreciopisoGral | number : '1.1'}} %</td>
 
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color1 "></canvas> Costo de venta</td>
-                                <td class="text-center borderLateralIzq ">$ {{costoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spancostoVta}} {{costoVta | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{porcostoVta | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppcostoVta | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppcostoVta}} {{ppcostoVta | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{ppporcostoVta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color2 "></canvas>Gasto de mantenimiento cryogénico y envases</td>
-                                <td class="text-center borderLateralIzq ">$ {{gastoCryo | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spangastoCryo}} {{gastoCryo | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{porgastoCryo | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppgastoCryo | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppgastoCryo}} {{ppgastoCryo | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{ppporgastoCryo | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color3 "></canvas>Gasto distribución</td>
-                                <td class="text-center borderLateralIzq ">$ {{gastoDist | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spangastoDist}} {{gastoDist | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{porgastoDist | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppgastoDist | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppgastoDist}} {{ppgastoDist | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{ppporgastoDist | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color4 "></canvas>Depreciación de activos</td>
-                                <td class="text-center borderLateralIzq ">$ {{depreciacion | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spandepreciacion}} {{depreciacion | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{pordepreciacion | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppdepreciacion | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppdepreciacion}} {{ppdepreciacion | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{pppordepreciacion | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado " style="text-align: left !important; ">
                                     <span>Utilidad operativa antes de gastos de venta y administracion</span>
                                 </td>
-                                <td class="txtResaltado text-center borderLateralIzq ">$ {{utilidadOperativaSinGVyGADM | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralIzq ">{{spanutilidadOperativaSinGVyGADM}} {{utilidadOperativaSinGVyGADM | number : '1.2'}}</td>
                                 <td class="txtResaltado text-center borderLateralDer ">{{porutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
-                                <td class="txtResaltado text-center ">$ {{pputilidadOperativaSinGVyGADM | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center ">{{spanpputilidadOperativaSinGVyGADM}} {{pputilidadOperativaSinGVyGADM | number : '1.2'}}</td>
                                 <td class="txtResaltado text-center borderLateralDer ">{{ppporutilidadOperativaSinGVyGADM | number : '1.1'}} %</td>
 
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color5 "></canvas>Gasto de venta</td>
-                                <td class="text-center borderLateralIzq ">$ {{gastoVta | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spangastoVta}} {{gastoVta | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{porgastoVta | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppgastoVta | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppgastoVta}} {{ppgastoVta | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{ppporgastoVta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left !important; "><canvas class="color6 "></canvas>Gasto de administración</td>
-                                <td class="text-center borderLateralIzq ">$ {{gastoAdm | number : '1.2'}}</td>
+                                <td class="text-center borderLateralIzq ">{{spangastoAdm}} {{gastoAdm | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{porgastoAdm | number : '1.1'}} %</td>
-                                <td class="text-center ">$ {{ppgastoAdm | number : '1.2'}}</td>
+                                <td class="text-center ">{{spanppgastoAdm}} {{ppgastoAdm | number : '1.2'}}</td>
                                 <td class="text-center borderLateralDer ">{{ppporgastoAdm | number : '1.1'}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado " style="text-align: left !important; "><canvas class="color7 "></canvas>Utilidad operativa neta</td>
-                                <td class="txtResaltado text-center borderLateralIzq ">$ {{utilidadOperativaNeta | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center borderLateralIzq ">{{spanutilidadOperativaNeta}} {{utilidadOperativaNeta | number : '1.2'}}</td>
                                 <td class="txtResaltado text-center borderLateralDer ">{{porutilidadOperativaNeta | number : '1.1'}} %</td>
-                                <td class="txtResaltado text-center ">$ {{pputilidadOperativaNeta | number : '1.2'}}</td>
+                                <td class="txtResaltado text-center ">{{spanpputilidadOperativaNeta}} {{pputilidadOperativaNeta | number : '1.2'}}</td>
                                 <td class="txtResaltado text-center borderLateralDer ">{{ppporutilidadOperativaNeta | number : '1.1'}} %</td>
                             </tr>
                             <tr>
@@ -147,28 +149,28 @@
                             </tr>
                             <tr>
                                 <td class="txtResaltado col-md-3 facturacion " COLSPAN=1><span>Facturación <b>anual</b></span></td>
-                                <td class="gridTabla1 col-md-2 borderBottom padding-facturacion " COLSPAN=2>$ {{tpfacturacionAnual | number}}</td>
-                                <td class="gridTabla2 col-md-2 borderBottom padding-facturacion " COLSPAN=2>$ {{tppfacturacionAnual | number}}</td>
+                                <td class="gridTabla1 col-md-2 borderBottom padding-facturacion " COLSPAN=2>{{spantpfacturacionAnual}} {{tpfacturacionAnual | number}}</td>
+                                <td class="gridTabla2 col-md-2 borderBottom padding-facturacion " COLSPAN=2>{{spantppfacturacionAnual}} {{tppfacturacionAnual | number}}</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa antes de GV & GADM
                                         <b>anual</b></span></td>
-                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>$ {{tputilidadOperativaSinGVyGADM | number}}</span></td>
-                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>$ {{tpputilidadOperativaSinGVyGADM | number}}</span></td>
+                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>{{spantputilidadOperativaSinGVyGADM}} {{tputilidadOperativaSinGVyGADM | number}}</span></td>
+                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>{{spantpputilidadOperativaSinGVyGADM}} {{tpputilidadOperativaSinGVyGADM | number}}</span></td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa neta <b>anual</b></span></td>
-                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>$ {{tputilidadOperativaNeta  | number}}</span></td>
-                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>$ {{tpputilidadOperativaNeta | number}}</span></td>
+                                <td class="gridTabla1 borderLateralIzq borderBottom " COLSPAN=2><span>{{spantputilidadOperativaNeta}} {{tputilidadOperativaNeta  | number}}</span></td>
+                                <td class="gridTabla2 borderBottom " COLSPAN=2><span>{{spantpputilidadOperativaNeta}} {{tpputilidadOperativaNeta | number}}</span></td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado facturacion " COLSPAN=1><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA)
                                         <b>anual</b></span></td>
                                 <td class="gridTabla1 borderInferiorIzq " COLSPAN=2>
-                                    <span>$ {{tputilidadOperativaNetaCryoInfra | number}}</span>
+                                    <span>{{spantputilidadOperativaNetaCryoInfra}} {{tputilidadOperativaNetaCryoInfra | number}}</span>
                                 </td>
                                 <td class="gridTabla2 borderInferiorDer " COLSPAN=2>
-                                    <span>$ {{tpputilidadOperativaNetaCryoInfra | number}}</span>
+                                    <span>{{spantpputilidadOperativaNetaCryoInfra}} {{tpputilidadOperativaNetaCryoInfra | number}}</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -176,16 +178,16 @@
                 </div>
             </div>
         </div>
-        <div class="col resultados mb-2 ">
+        <div class="col resultados mb-2 me-4">
             <div class="row tituloResultados ">
-                <div class="ms-5 mt-4 ">
-                    <img src="../../../assets/icons/icon-grafica.png" class="ms-3 icon">
+                <div class="ms-3 mt-4" style="font-size: 0.7em;">
+                    <img src="../../../assets/icons/icon-grafica.png" class="ms-3 icon-grafica" style="width: 4%;">
                     <span>  Gráfica </span>
                     <span style="color: #EF872F; ">Resultados</span>
                 </div>
             </div>
-            <div class="row mt-5 text-center chart ">
-                <div class="d-flex justify-content-center mt-5">
+            <div class="row mt-3 text-center chart ms-2">
+                <div class="d-flex justify-content-center mt-5 chartSpan">
                     <div class="gauge-wraper ">
                         <div class="gauge " data-value="123L ">
                             <div class="range first-half "></div>
@@ -194,22 +196,22 @@
                         <div class="gauge-meter " id="gauge-meter " style="transform: rotate(90deg) " [ngStyle]="{ 'transform': 'rotate(' + angulo + 'deg)'} ">
                         </div>
                     </div>
-                    <p class="precioPiso "><span style="color: #2264a1; ">$ {{chartPrecioPiso | number}}</span> <br> <span style="color: #04539E; ">Precio piso</span></p>
+                    <p class="precioPiso "><span style="color: #2264a1; ">{{spanchartPrecioPiso}} {{chartPrecioPiso | number}}</span> <br> <span style="color: #04539E; ">Precio piso</span></p>
                     <p class="utilidadOperativa "><span style="color: #575756; ">Utilidad<br>operativa neta</span></p>
                     <p class="gastosVenta "><span style="color: #575756; ">Gastos de venta y <br> administración</span></p>
-                    <p class="gastosVentaValor "><span style="color: #04539E; ">$ {{chartGastosVenta | number}}</span></p>
+                    <p class="gastosVentaValor "><span style="color: #04539E; ">{{spanchartGastosVenta}} {{chartGastosVenta | number}}</span></p>
                     <p class="gastosCryogénico "><span style="color: #575756; ">Gastos cryogénico, <br> distribución y <br> depreciación</span></p>
-                    <p class="gastosCryogénicoValor "><span style="color: #04539E; ">$ {{chartGastoCryogenico | number}}</span></p>
+                    <p class="gastosCryogénicoValor "><span style="color: #04539E; ">{{spanchartGastoCryogenico}} {{chartGastoCryogenico | number}}</span></p>
                     <p class="costosVenta "><span style="color: #575756; ">Costo de <br> venta</span></p>
-                    <p class="costosVentaValor "><span style="color: #04539E; ">$ {{chartCostoVenta | number}}</span></p>
+                    <p class="costosVentaValor "><span style="color: #04539E; ">{{spanchartCostoVenta}} {{chartCostoVenta | number}}</span></p>
                 </div>
             </div>
             <div class="row text-center precioPropuesto ">
-                <span style="color: #04539E; font-size: 0.7em; ">$ {{chartPrecioPropuesto | number}}</span>
+                <span style="color: #04539E; font-size: 0.7em; ">{{spanchartPrecioPropuesto}} {{chartPrecioPropuesto | number: '1.2'}}</span>
                 <span style="color: #04539E; font-size: 0.7em; ">Precio propuesto</span>
             </div>
 
-            <div class="row mt-2 ">
+            <div class="row mt-1 ">
                 <div class="col me-4 ms-4 mt-1 ">
                     <div class="row diferencia text-center ">
                         <img src="../../../assets/icons/icon-utilidad.png " class="iconRes ">
@@ -219,7 +221,7 @@
                             <p class="mt-3 "> Utilidad operativa neta</p>
                         </div>
                         <div class="row valor " id="utilidadNetaText">
-                            <p><b>{{utilidadNeta}}</b></p>
+                            <p style="font-size: 0.9em !important;  line-height: 1.1em !important"><b>{{utilidadNeta}}</b></p>
                         </div>
                     </div>
                 </div>
@@ -230,14 +232,14 @@
                     </div>
                     <div class="posible " style=" position: relative; ">
                         <div class="row division ">
-                            <p class="mt-3 ">Diferencia en utilidad precio propuesto vs. utilidad precio piso</p><span style="font-family: Roboto-Semibold; color: #8a8987; margin-top: -10px; ">anual</span>
+                            <p class="mt-3 ">Diferencia en utilidad precio propuesto vs utilidad precio piso</p><span style="font-family: Roboto-Regular; color: #8a8987; margin-top: -20px; font-size: 1.1em; ">anual</span>
                         </div>
                         <div class="row valor " id="difPrePropuestoVSPrePiso">
-                            <p>$ {{difPrePropuestoVSPrePiso | number}}</p>
+                            <p style="font-size: 1em !important; ">{{spandifPrePropuestoVSPrePiso}} {{difPrePropuestoVSPrePiso | number}}</p>
                         </div>
                     </div>
-                    <div class="row costoOportunidad text-center " style="z-index: -9999; ">
-                        <span style="font-size: 0.7em; "> {{costoVariable}} </span>
+                    <div class="row costoOportunidad text-center " style="z-index: -9999;">
+                        <span style="font-size: 0.9em !important; "> {{costoVariable}} </span>
                     </div>
                 </div>
 

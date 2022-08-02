@@ -49,7 +49,7 @@ export class LoadingComponent implements OnInit {
       correo: decodeURIComponent(correo),
       token: decodeURIComponent(token),
       origen: cifrado,
-      sourceId: 3
+      sourceId: 1
     }
 
     this.loading = true;
